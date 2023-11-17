@@ -3,7 +3,7 @@ services:
   mysql: 
     image: cualestunombre/back:mysql
     restart: unless-stopped
-    container_name: appmysql
+    container_name: app_mysql
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql
       - ./mysql/sqls/:/docker-entrypoint-initdb.d/
@@ -17,20 +17,21 @@ services:
     volumes:
       - ./authentication/upload/image:/usr/src/app/authentication/upload/image
     depends_on:
-      - mysql  # MySQL 서비스가 먼저 실행되도록 의존성을 추가
+      - mysql 
 
   community:
-    image: cualestunombre/back:community  # <-- 여기를 수정: cualestunombre/back:community 로 변경
+    image: cualestunombre/back:community 
     container_name: app_community
     volumes: 
       - ./community/upload/image:/usr/src/app/community/upload/image
     depends_on:
-      - authentication  # Authentication 서비스가 먼저 실행되도록 의존성을 추가
+      - authentication 
 
   nginx:
     image: cualestunombre/back:nginx
+    container_name: app_nginx
     restart: always
     ports:
       - "80:80"
     depends_on:
-      - community  # Community 서비스가 먼저 실행되도록 의존성을 추가
+      - community  
