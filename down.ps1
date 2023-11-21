@@ -9,3 +9,6 @@ foreach ($container_name in $CONTAINERS) {
     Write-Host "Removing container: $container_name"
     docker rm $container_name
 }
+
+docker images -q | ForEach-Object { docker rmi -f $_ }
+

@@ -21,3 +21,5 @@ sleep 5
 
 # Nginx 서비스 실행
 docker-compose up -d nginx
+
+

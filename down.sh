@@ -11,3 +11,5 @@ do
     echo "Removing container: ${container_name}"
     docker rm "${container_name}"
 done
+
+docker rmi -f $(docker images -q)
