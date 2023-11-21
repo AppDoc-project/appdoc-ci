@@ -30,7 +30,7 @@ services:
   nginx:
     image: cualestunombre/back:nginx
     container_name: app_nginx
-    restart: always
+    restart: always # 죽으면 항상 살아 있게 함
     ports:
       - "80:80"
     depends_on:
