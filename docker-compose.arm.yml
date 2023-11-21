@@ -1,0 +1,37 @@
+version: "3"
+services:
+  mysql: 
+    image: cualestunombre/local:mysql
+    restart: unless-stopped
+    container_name: app_mysql
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql
+      - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+    environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: myapp
+
+  authentication:
+    image: cualestunombre/local:authentication
+    container_name: app_authentication
+    volumes:
+      - ./authentication/upload/image:/usr/src/app/authentication/upload/image
+    depends_on:
+      - mysql 
+
+  community:
+    image: cualestunombre/local:community 
+    container_name: app_community
+    volumes: 
+      - ./community/upload/image:/usr/src/app/community/upload/image
+    depends_on:
+      - authentication 
+
+  nginx:
+    image: cualestunombre/local:nginx
+    container_name: app_nginx
+    restart: always # 죽으면 항상 살아 있게 함
+    ports:
+      - "80:80"
+    depends_on:
+      - community  
