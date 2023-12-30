@@ -15,16 +15,14 @@ services:
     container_name: app_authentication
     volumes:
       - ./authentication/upload/image:/usr/src/app/authentication/upload/image
-    depends_on:
-      - mysql
+    
 
   community:
     image: cualestunombre/local:community 
     container_name: app_community
     volumes: 
       - ./community/upload/image:/usr/src/app/community/upload/image
-    depends_on:
-      - mysql
+  
   
 
   nginx:
