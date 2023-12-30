@@ -2,7 +2,7 @@
 Remove-Item -Path .\mysql -Recurse -Force
 
 # MySQL 서비스 백그라운드로 실행
-docker-compose -f docker-compose.arm.yml up -d mysql
+docker-compose -f docker-compose.yml up -d mysql
 
 # 10초 대기
 Start-Sleep -Seconds 10
