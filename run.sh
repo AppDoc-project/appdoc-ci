@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# MySQL 서비스 삭제
-rm -r mysql
-
 # MySQL 서비스 백그라운드로 실행
 docker-compose -f docker-compose.arm.yml up -d mysql
 

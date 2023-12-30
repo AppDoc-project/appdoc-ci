@@ -1,5 +1,4 @@
-# MySQL 서비스 삭제
-Remove-Item -Path .\mysql -Recurse -Force
+
 
 # MySQL 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d mysql
