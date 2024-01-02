@@ -10,6 +10,8 @@ Write-Host "mysql 실행완료"
 # Nginx 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d nginx
 
+docker-compose -f docker-compose.yml up -d redis
+
 # Authentication 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d authentication
 
