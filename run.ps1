@@ -1,5 +1,3 @@
-
-
 # MySQL 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d mysql
 

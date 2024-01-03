@@ -17,7 +17,10 @@ services:
     volumes:
       - ./authentication/upload/image:/usr/src/app/authentication/upload/image
    
-
+  redis:
+    image: cualestunombre/back:redis
+    container_name: app_redis
+    
   
 
   community:
