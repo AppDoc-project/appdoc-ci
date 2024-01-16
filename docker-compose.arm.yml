@@ -20,13 +20,19 @@ services:
     image: cualestunombre/local:redis
     container_name: app_redis
 
+  mongodb:
+    image: cualestunombre/local:mongodb
+    container_name: app_mongodb
+
   community:
     image: cualestunombre/local:community 
     container_name: app_community
     volumes: 
       - ./community/upload/image:/usr/src/app/community/upload/image
   
-  
+  socket:
+    image: cualestunombre/local:socket
+    container_name: app_socket
 
   nginx:
     image: cualestunombre/local:nginx

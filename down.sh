@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONTAINERS=("app_authentication" "app_nginx" "app_community" "app_mysql")
+CONTAINERS=("app_authentication" "app_nginx" "app_community" "app_mysql" "app_redis" "app_socket" "app_mongodb")
 
 
 for container_name in "${CONTAINERS[@]}"

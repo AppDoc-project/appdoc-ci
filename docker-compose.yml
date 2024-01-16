@@ -9,7 +9,10 @@ services:
     environment:
        MYSQL_ROOT_PASSWORD: root
        MYSQL_DATABASE: myapp
-   
+
+  mongodb:
+    image: cualestunombre/back:mongodb
+    container_name: app_mongodb
 
   authentication:
     image: cualestunombre/back:authentication
@@ -29,6 +32,10 @@ services:
     volumes: 
       - ./community/upload/image:/usr/src/app/community/upload/image
  
+  socket:
+    image: cualestunombre/back:socket
+    container_name: app_socket
+
 
   nginx:
     image: cualestunombre/back:nginx
