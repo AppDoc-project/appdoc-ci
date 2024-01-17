@@ -12,4 +12,3 @@ foreach ($container_name in $CONTAINERS) {
 
 docker images -q | ForEach-Object { docker rmi -f $_ }
 
-docker system prune
