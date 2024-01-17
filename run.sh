@@ -14,6 +14,9 @@ docker-compose -f docker-compose.arm.yml up -d redis
 
 docker-compose -f docker-compose.arm.yml up -d mongodb
 
+sleep 5
+echo "서버 가동"
+
 # Authentication 서비스 백그라운드로 실행
 docker-compose -f docker-compose.arm.yml up -d authentication
 

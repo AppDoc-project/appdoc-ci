@@ -22,6 +22,5 @@ docker-compose -f docker-compose.yml up -d community
 docker-compose -f docker-compose.yml up -d socket
 
 # Authentication 및 Community 서비스 로그 합치기
-docker-compose -f docker-compose.yml logs -f authentication community
+docker-compose -f docker-compose.yml logs -f authentication community socket
 
-docker-compose -f docker-compose.yml logs -f socket
