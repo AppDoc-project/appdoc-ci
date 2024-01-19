@@ -14,15 +14,13 @@ sleep 10
 echo "mysql mongodb redis nginx 실행완료"
 
 
-
-
-
-
-sleep 5
-echo "서버 가동"
-
 # Authentication 서비스 백그라운드로 실행
 docker-compose -f docker-compose.arm.yml up -d authentication
+
+sleep 5
+echo "인증 서버 가동"
+
+
 
 # Community 서비스 백그라운드로 실행
 docker-compose -f docker-compose.arm.yml up -d community
