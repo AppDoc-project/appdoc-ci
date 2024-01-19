@@ -21,6 +21,7 @@ services:
     container_name: app_redis
 
   mongodb:
+    restart: unless-stopped
     image: cualestunombre/local:mongodb
     container_name: app_mongodb
 

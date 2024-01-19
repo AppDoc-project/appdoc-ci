@@ -11,6 +11,7 @@ services:
        MYSQL_DATABASE: myapp
 
   mongodb:
+    restart: unless-stopped
     image: cualestunombre/back:mongodb
     container_name: app_mongodb
 
@@ -23,8 +24,6 @@ services:
   redis:
     image: cualestunombre/back:redis
     container_name: app_redis
-    
-  
 
   community:
     image: cualestunombre/back:community 
