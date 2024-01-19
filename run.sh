@@ -5,14 +5,17 @@ docker-compose -f docker-compose.arm.yml up -d mysql
 
 docker-compose -f docker-compose.arm.yml up -d mongodb
 
-# 10초 대기
-sleep 10
-echo "mysql mongodb 실행완료"
+docker-compose -f docker-compose.arm.yml up -d redis
 
-# Nginx 서비스 백그라운드로 실행
 docker-compose -f docker-compose.arm.yml up -d nginx
 
-docker-compose -f docker-compose.arm.yml up -d redis
+# 10초 대기
+sleep 10
+echo "mysql mongodb redis nginx 실행완료"
+
+
+
+
 
 
 sleep 5
