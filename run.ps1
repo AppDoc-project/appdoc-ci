@@ -1,16 +1,19 @@
 # MySQL 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d mysql
 
+docker-compose -f docker-compose.yml up -d mongodb
+
 # 10초 대기
 Start-Sleep -Seconds 10
-Write-Host "mysql 실행완료"
+Write-Host "mysql mongodb 실행완료"
 
 # Nginx 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d nginx
 
 docker-compose -f docker-compose.yml up -d redis
 
-docker-compose -f docker-compose.yml up -d mongodb
+
+
 
 # Authentication 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d authentication
