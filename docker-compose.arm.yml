@@ -6,9 +6,10 @@ services:
     container_name: app_mysql
     volumes:
       - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+      - ./mysql_data:/var/lib/mysql  # MySQL 데이터 디렉토리를 로컬에 저장
     environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_DATABASE: myapp
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myapp
 
   authentication:
     image: cualestunombre/local:authentication
