@@ -22,7 +22,7 @@ docker-compose -f docker-compose.yml up -d authentication
 
 # Community 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d community
-exi
+
 # Chat 서비스 백그라운드로 실행
 docker-compose -f docker-compose.yml up -d socket
 
