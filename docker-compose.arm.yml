@@ -25,6 +25,8 @@ services:
     restart: unless-stopped
     image: cualestunombre/local:mongodb
     container_name: app_mongodb
+    volumes:
+      - ./mongodb_data:/data/db  # MongoDB 데이터 디렉토리를 로컬에 저장
 
   community:
     image: cualestunombre/local:community 
