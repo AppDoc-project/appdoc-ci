@@ -15,8 +15,8 @@ services:
     image: cualestunombre/operation:authentication
     container_name: app_authentication
     volumes:
-      - ./authentication/upload/image:/usr/src/app/authentication/upload/image
-      - ./authentication/logs:/usr/src/app/authentication/logs
+      - ./authentication/upload/image:/Users/woo/src/app/authentication/upload/image
+      - ./authentication/logs:/Users/woo/src/app/authentication/logs
     
   redis:
     image: cualestunombre/operation:redis
@@ -33,14 +33,14 @@ services:
     image: cualestunombre/operation:community 
     container_name: app_community
     volumes: 
-      - ./community/upload/image:/usr/src/app/community/upload/image
-      - ./community/logs:/usr/src/app/community/logs
+      - ./community/upload/image:/Users/woo/src/app/community/upload/image
+      - ./community/logs:/Users/woo/src/app/community/logs
   
   socket:
     image: cualestunombre/operation:socket
     container_name: app_socket
     volumes:
-      - ./socket/logs:/usr/src/app/socket/logs
+      - ./socket/logs:/Users/woo/src/app/socket/logs
 
   nginx:
     image: cualestunombre/operation:nginx
