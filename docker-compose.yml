@@ -1,45 +1,51 @@
 version: "3"
 services:
   mysql: 
-    image: cualestunombre/back:mysql
+    image: cualestunombre/operation:mysql
     restart: unless-stopped
     container_name: app_mysql
     volumes:
       - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+      - ./mysql/data:/var/lib/mysql 
     environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_DATABASE: myapp
-
-  mongodb:
-    restart: unless-stopped
-    image: cualestunombre/back:mongodb
-    container_name: app_mongodb
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myapp
 
   authentication:
-    image: cualestunombre/back:authentication
+    image: cualestunombre/operation:authentication
     container_name: app_authentication
     volumes:
       - ./authentication/upload/image:/usr/src/app/authentication/upload/image
-   
+      - ./authentication/logs:/usr/src/app/authentication/logs
+    
   redis:
-    image: cualestunombre/back:redis
+    image: cualestunombre/operation:redis
     container_name: app_redis
 
+  mongodb:
+    restart: unless-stopped
+    image: cualestunombre/operation:mongodb
+    container_name: app_mongodb
+    volumes:
+      - ./mongodb/data:/data/db 
+
   community:
-    image: cualestunombre/back:community 
+    image: cualestunombre/operation:community 
     container_name: app_community
     volumes: 
       - ./community/upload/image:/usr/src/app/community/upload/image
- 
+      - ./community/logs:/usr/src/app/community/logs
+  
   socket:
-    image: cualestunombre/back:socket
+    image: cualestunombre/operation:socket
     container_name: app_socket
-
+    volumes:
+      - ./socket/logs:/usr/src/app/socket/logs
 
   nginx:
-    image: cualestunombre/back:nginx
+    image: cualestunombre/operation:nginx
     container_name: app_nginx
     restart: always # 죽으면 항상 살아 있게 함
     ports:
       - "80:80"
- 
+  

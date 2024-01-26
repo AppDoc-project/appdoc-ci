@@ -1,3 +1,6 @@
 mysql
 community
 authentication
+mysql_data
+mongodb_data
+socket

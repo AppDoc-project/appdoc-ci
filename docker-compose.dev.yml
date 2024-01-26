@@ -1,45 +1,47 @@
 version: "3"
 services:
   mysql: 
-    image: cualestunombre/local:mysql
+    image: cualestunombre/dev:mysql
     restart: unless-stopped
     container_name: app_mysql
     volumes:
       - ./mysql/sqls/:/docker-entrypoint-initdb.d/
-      - ./mysql_data:/var/lib/mysql  # MySQL 데이터 디렉토리를 로컬에 저장
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: myapp
 
   authentication:
-    image: cualestunombre/local:authentication
+    image: cualestunombre/dev:authentication
     container_name: app_authentication
     volumes:
       - ./authentication/upload/image:/usr/src/app/authentication/upload/image
+      - ./authentication/logs:/usr/src/app/authentication/logs
     
   redis:
-    image: cualestunombre/local:redis
+    image: cualestunombre/dev:redis
     container_name: app_redis
 
   mongodb:
     restart: unless-stopped
-    image: cualestunombre/local:mongodb
+    image: cualestunombre/dev:mongodb
     container_name: app_mongodb
-    volumes:
-      - ./mongodb_data:/data/db  # MongoDB 데이터 디렉토리를 로컬에 저장
+
 
   community:
-    image: cualestunombre/local:community 
+    image: cualestunombre/dev:community 
     container_name: app_community
     volumes: 
       - ./community/upload/image:/usr/src/app/community/upload/image
+      - ./community/logs:/usr/src/app/community/logs
   
   socket:
-    image: cualestunombre/local:socket
+    image: cualestunombre/dev:socket
     container_name: app_socket
+    volumes:
+      - ./socket/logs:/usr/src/app/socket/logs
 
   nginx:
-    image: cualestunombre/local:nginx
+    image: cualestunombre/dev:nginx
     container_name: app_nginx
     restart: always # 죽으면 항상 살아 있게 함
     ports:
