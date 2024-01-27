@@ -156,3 +156,12 @@ CREATE TABLE IF NOT EXISTS thread_report (
     id bigint NOT NULL PRIMARY KEY REFERENCES report(id),
     thread_id bigint NOT NULL UNIQUE REFERENCES thread(id)
 );
+
+CREATE TABLE IF NOT EXISTS pick (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tuteeId BIGINT NOT NULL,
+    tutorId BIGINT NOT NULL,
+    created_at DATETIME(6),
+    modified_at DATETIME(6),
+    UNIQUE KEY uk_pick_tutee_tutor (tuteeId, tutorId),
+);
