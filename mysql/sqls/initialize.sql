@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS user (
 );
 
 CREATE TABLE IF NOT EXISTS tutor (
-    id BIGINT PRIMARY KEY,
+    id BIGINT PRIMARY KEY ,
     authentication_process ENUM('AUTHENTICATION_DENIED', 'AUTHENTICATION_ONGOING', 'AUTHENTICATION_SUCCESS') NOT NULL,
     authentication_address VARCHAR(255) NOT NULL,
     self_description VARCHAR(255),
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS tutee (
 );
 
 CREATE TABLE IF NOT EXISTS user_mail (
-    id BIGINT PRIMARY KEY,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
     created_at DATETIME(6),
     expiration_date_time DATETIME(6) NOT NULL,
     modified_at DATETIME(6),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS tutee_mail (
 );
 
 CREATE TABLE IF NOT EXISTS tutor_speciality (
-    id BIGINT PRIMARY KEY,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
     created_at DATETIME(6),
     modified_at DATETIME(6),
     tutor_id BIGINT NOT NULL,
@@ -159,9 +159,53 @@ CREATE TABLE IF NOT EXISTS thread_report (
 
 CREATE TABLE IF NOT EXISTS pick (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    tuteeId BIGINT NOT NULL,
-    tutorId BIGINT NOT NULL,
+    tutee_id BIGINT NOT NULL,
+    tutor_id BIGINT NOT NULL,
     created_at DATETIME(6),
     modified_at DATETIME(6),
-    UNIQUE KEY uk_pick_tutee_tutor (tuteeId, tutorId),
+    UNIQUE KEY uk_pick_tutee_tutor (tutee_id, tutor_id)
+);
+
+CREATE TABLE IF NOT EXISTS review(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tutee_id BIGINT NOT NULL,
+    tutor_id BIGINT NOT NULL,
+    review VARCHAR(300),
+    created_at DATETIME(6),
+    modified_at DATETIME(6),
+    score INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS reservation(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tutee_id BIGINT NOT NULL,
+    tutor_id BIGINT NOT NULL,
+    start_time DATETIME(6) NOT NULL,
+    memo varchar(300),
+    end_time DATETIME(6) NOT NULL,
+    lesson_type ENUM('FACETOFACE', 'REMOTE') NOT NULL,
+    CONSTRAINT unique_lesson_constraint UNIQUE (tutee_id, tutor_id, start_time)
+);
+
+CREATE TABLE IF NOT EXISTS feedback(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tutee_id BIGINT NOT NULL,
+    tutor_id BIGINT NOT NULL,
+    feedback VARCHAR(500) NOT NULL, 
+    created_at DATETIME(6),
+    modified_at DATETIME(6)
+);
+
+CREATE TABLE IF NOT EXISTS lesson(
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tutee_id BIGINT NOT NULL,
+    tutor_id BIGINT NOT NULL,
+    start_time DATETIME(6) NOT NULL,
+    end_time DATETIME(6) NOT NULL,
+    lesson_type ENUM('FACETOFACE','REMOTE') NOT NULL,
+    lesson_status ENUM('ONGOING','ENDED') NOT NULL,
+    review_id BIGINT NOT NULL REFERENCES review(id),
+    feedback_id BIGINT NOT NULL REFERENCES feedback(id),
+    memo varchar(300),
+    CONSTRAINT unique_lesson_constraint UNIQUE (tutee_id, tutor_id, start_time)
 );
