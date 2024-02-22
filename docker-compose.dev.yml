@@ -9,6 +9,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: myapp
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
   authentication:
     image: cualestunombre/dev:authentication
@@ -16,16 +17,21 @@ services:
     volumes:
       - ./authentication/upload/image:/Users/woo/src/app/authentication/upload/image
       - ./authentication/logs:/Users/woo/src/app/authentication/logs
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
     
   redis:
     image: cualestunombre/dev:redis
     container_name: app_redis
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
   mongodb:
     restart: unless-stopped
     image: cualestunombre/dev:mongodb
     container_name: app_mongodb
-
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
   community:
     image: cualestunombre/dev:community 
@@ -33,12 +39,16 @@ services:
     volumes: 
       - ./community/upload/image:/Users/woo/src/app/community/upload/image
       - ./community/logs:/Users/woo/src/app/community/logs
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
   
   socket:
     image: cualestunombre/dev:socket
     container_name: app_socket
     volumes:
       - ./socket/logs:/Users/woo/src/app/socket/logs
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
   nginx:
     image: cualestunombre/dev:nginx
@@ -46,4 +56,5 @@ services:
     restart: always # 죽으면 항상 살아 있게 함
     ports:
       - "80:80"
-  
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정

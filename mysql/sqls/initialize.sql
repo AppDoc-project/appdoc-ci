@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS reservation(
     memo varchar(300),
     end_time DATETIME(6) NOT NULL,
     lesson_type ENUM('FACETOFACE', 'REMOTE') NOT NULL,
-    CONSTRAINT unique_lesson_constraint UNIQUE (tutee_id, tutor_id, start_time)
+    CONSTRAINT unique_reservation_constraint UNIQUE (tutee_id, tutor_id, start_time)
 );
 
 CREATE TABLE IF NOT EXISTS feedback(
@@ -204,8 +204,11 @@ CREATE TABLE IF NOT EXISTS lesson(
     end_time DATETIME(6) NOT NULL,
     lesson_type ENUM('FACETOFACE','REMOTE') NOT NULL,
     lesson_status ENUM('ONGOING','ENDED') NOT NULL,
-    review_id BIGINT NOT NULL REFERENCES review(id),
-    feedback_id BIGINT NOT NULL REFERENCES feedback(id),
+    review_id BIGINT  REFERENCES review(id),
+    feedback_id BIGINT REFERENCES feedback(id),
     memo varchar(300),
+    channel_name VARCHAR(255),
+    tutee_token VARCHAR(255),
+    tutor_token VARCHAR(255),
     CONSTRAINT unique_lesson_constraint UNIQUE (tutee_id, tutor_id, start_time)
 );
