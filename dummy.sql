@@ -1,83 +1,66 @@
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '피아노');
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '기타');
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '보컬');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '드럼');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '베이스');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '작곡');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '관악기');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '현악기');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '건반악기');
-
-INSERT INTO community (created_at, modified_at, name) VALUES (NOW(), NOW(), '자유게시판');
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 79, 'BASS',1);
+VALUES (NOW(), NOW(), 1, 'BASS',46);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 79, 'COMPOSITION',2);
+VALUES (NOW(), NOW(), 2, 'COMPOSITION',47);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 80, 'COMPOSITION',3);
+VALUES (NOW(), NOW(), 3, 'COMPOSITION',48);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 80, 'DRUM',4);
+VALUES (NOW(), NOW(), 4, 'DRUM',49);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 81, 'DRUM',5);
+VALUES (NOW(), NOW(), 5, 'DRUM',50);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 81, 'GUITAR',6);
+VALUES (NOW(), NOW(), 6, 'GUITAR',51);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 82, 'GUITAR',7);
+VALUES (NOW(), NOW(), 7, 'GUITAR',52);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 82, 'KEYBOARD_INSTRUMENT',8);
+VALUES (NOW(), NOW(), 8, 'KEYBOARD_INSTRUMENT',53);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 83, 'KEYBOARD_INSTRUMENT',9);
+VALUES (NOW(), NOW(), 9, 'KEYBOARD_INSTRUMENT',54);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 83, 'MUSIC_THEORY',10);
+VALUES (NOW(), NOW(), 10, 'MUSIC_THEORY',55);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 83, 'PIANO',11);
+VALUES (NOW(), NOW(), 11, 'PIANO',56);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 83, 'MUSIC_THEORY',12);
+VALUES (NOW(), NOW(), 12, 'MUSIC_THEORY',57);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 84, 'PIANO',13);
+VALUES (NOW(), NOW(), 13, 'PIANO',58);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 84, 'STRING_INSTRUMENT',14);
+VALUES (NOW(), NOW(), 14, 'STRING_INSTRUMENT',59);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 85, 'VOCAL',15);
+VALUES (NOW(), NOW(), 15, 'VOCAL',60);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 85, 'STRING_INSTRUMENT',16);
+VALUES (NOW(), NOW(), 16, 'STRING_INSTRUMENT',61);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 86, 'VOCAL',17);
+VALUES (NOW(), NOW(), 17, 'VOCAL',62);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 86, 'WIND_INSTRUMENT',18);
+VALUES (NOW(), NOW(), 18, 'WIND_INSTRUMENT',63);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 87, 'BASS',19);
+VALUES (NOW(), NOW(), 19, 'BASS',64);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 87, 'WIND_INSTRUMENT',20);
+VALUES (NOW(), NOW(), 20, 'WIND_INSTRUMENT',65);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 88, 'BASS',21);
+VALUES (NOW(), NOW(), 21, 'BASS',66);
 
 INSERT INTO tutor_speciality (created_at, modified_at, tutor_id, specialities, id)
-VALUES (NOW(), NOW(), 88, 'WIND_INSTRUMENT',22);
+VALUES (NOW(), NOW(), 22, 'WIND_INSTRUMENT',67);

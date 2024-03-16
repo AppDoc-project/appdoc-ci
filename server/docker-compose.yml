@@ -1,49 +1,37 @@
 version: "3"
 services:
-  mysql: 
-    image: cualestunombre/dev:mysql
-    restart: unless-stopped
-    container_name: app_mysql
-    volumes:
-      - ./mysql/sqls/:/docker-entrypoint-initdb.d/
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: myapp
-      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
-
   authentication:
-    image: cualestunombre/dev:authentication
+    image: cualestunombre/operation:authentication
     container_name: app_authentication
     volumes:
       - ./authentication/upload/image:/Users/woo/src/app/authentication/upload/image
       - ./authentication/logs:/Users/woo/src/app/authentication/logs
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    ports:
+      - "8030:8030"
+      - "8080:8080"
     
   redis:
-    image: cualestunombre/dev:redis
+    image: cualestunombre/operation:redis
     container_name: app_redis
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
-  mongodb:
-    restart: unless-stopped
-    image: cualestunombre/dev:mongodb
-    container_name: app_mongodb
-    environment:
-      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
-
   community:
-    image: cualestunombre/dev:community 
+    image: cualestunombre/operation:community 
     container_name: app_community
     volumes: 
       - ./community/upload/image:/Users/woo/src/app/community/upload/image
       - ./community/logs:/Users/woo/src/app/community/logs
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    ports:
+      - "8040:8040"
+      - "8081:8081"
   
   socket:
-    image: cualestunombre/dev:socket
+    image: cualestunombre/operation:socket
     container_name: app_socket
     volumes:
       - ./socket/logs:/Users/woo/src/app/socket/logs
@@ -51,17 +39,19 @@ services:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
   rabbit:
-    image: cualestunombre/dev:rabbit
+    image: cualestunombre/operation:rabbit
     container_name: app_rabbit
     environment:
       TZ: "Asia/Seoul"
 
   nginx:
-    image: cualestunombre/dev:nginx
+    image: cualestunombre/operation:nginx
     container_name: app_nginx
     restart: always # 죽으면 항상 살아 있게 함
     ports:
-      - "80:80"
+      - "443:443"
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
-
+    volumes:
+      - /etc/letsencrypt/live/beatmate.zapto.org:/etc/letsencrypt/live/beatmate.zapto.org
+      - ./nginx/log:/var/log/nginx

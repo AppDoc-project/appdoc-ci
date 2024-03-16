@@ -10,6 +10,8 @@ docker-compose -f docker-compose.dev.yml up -d redis
 
 docker-compose -f docker-compose.dev.yml up -d mongodb
 
+docker-compose -f docker-compose.dev.yml up -d rabbit
+
 sleep 10
 echo "서버 가동"
 

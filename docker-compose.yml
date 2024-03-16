@@ -20,6 +20,9 @@ services:
       - ./authentication/logs:/Users/woo/src/app/authentication/logs
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    ports:
+      - "8030:8030"
+      - "8080:8080"
     
   redis:
     image: cualestunombre/operation:redis
@@ -31,8 +34,9 @@ services:
     restart: unless-stopped
     image: cualestunombre/operation:mongodb
     container_name: app_mongodb
-    volumes:
+    volumes:  
       - ./mongodb/data:/data/db 
+      - ./mongodb/tmp:/tmp
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
@@ -44,6 +48,9 @@ services:
       - ./community/logs:/Users/woo/src/app/community/logs
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    ports:
+      - "8040:8040"
+      - "8081:8081"
   
   socket:
     image: cualestunombre/operation:socket
@@ -53,11 +60,19 @@ services:
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
 
+  rabbit:
+    image: cualestunombre/operation:rabbit
+    container_name: app_rabbit
+    environment:
+      TZ: "Asia/Seoul"
+
   nginx:
     image: cualestunombre/operation:nginx
     container_name: app_nginx
     restart: always # 죽으면 항상 살아 있게 함
     ports:
-      - "80:80"
+      - "443:443"
     environment:
       TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    volumes:
+      - /etc/letsencrypt/live/beatmate.zapto.org:/etc/letsencrypt/live/beatmate.zapto.org

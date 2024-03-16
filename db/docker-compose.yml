@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mysql: 
+    image: cualestunombre/operation:mysql
+    restart: unless-stopped
+    container_name: app_mysql
+    volumes:
+      - ./mysql/sqls/:/docker-entrypoint-initdb.d/
+      - ./mysql/data:/var/lib/mysql 
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myapp
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    ports:
+      - "3306:3306"
+   
+  mongodb:
+    restart: unless-stopped
+    image: cualestunombre/operation:mongodb
+    container_name: app_mongodb
+    volumes:  
+      - ./mongodb/data:/data/db 
+      - ./mongodb/tmp:/tmp
+    environment:
+      TZ: "Asia/Seoul" # 대한민국 표준시로 시간대 설정
+    ports:
+      - "27017:27017"
+
